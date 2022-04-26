@@ -1,72 +1,113 @@
 #include<iostream.h>
 #include<conio.h>
-   class art
-   {
-      protected:
-	  char name[20];
-	  int mark;
-      public:
-	 void geta()
-	 {
-	    cout<<"\n enter the name of art student:\n";
-	    cin>>name;
-	    cout<<"\n enter the mark of art student :\n";
-	    cin>>mark;
-	 }
-   };
-   class science:public art
-   {
-      protected :
-      char name1[20];
-       int mark1;
-       public:
-	 void getb()
-	 {
-	   cout<<"\n enter the name of science student:\n";
-	   cin>>name1;
-	   cout<<"\n enter the marks of science student:\n";
-	   cin>>mark1;
-	 }
-  };
-  class comma
-  {
-    protected:
-      char name2[20] ;
-       int mark2;
-    public :
-     void getc()
-     {
-       cout<<"\n enter the name of comma student:\n";
-       cin>>name2;
-       cout<<"\n enter the mark of comma student:\n";
-       cin>>mark2;
-     }
-  };
-  class result:public science ,public comma
-  {
+class stud
+{
+   private:
+	   int rollno;
+	   char name[20];
+   public:
+	  void get();
+	  void display();
+
+};
+void stud::get()
+{
+   cout<<"Enter Roll no = ";
+   cin>>rollno;
+   cout<<"Enter Name = ";
+   cin>>name;
+   cout<<"endl";
+}
+void stud::display()
+{
+   cout<<"Roll no :"<<rollno<<endl;
+   cout<<"name :"<<name<<endl;
+   cout<<endl;
+
+};
+class mark:public stud
+{
+   protected:
+	      int m,m1;
+   public:
+	      void get();
+	      void display();
+
+};
+void mark::get()
+{
+   stud::get();
+   cout<<"Enter mark first subc:";
+   cin>>m;
+   cout<<"Enter mark second subc:";
+   cin>>m1;
+   cout<<endl;
+}
+
+void mark::display()
+{
+   stud::display();
+   cout<<"mark first subject";
+   cout<<"mark second subject";
+   cout<<endl;
+}
+class info
+{
+  private:
+    int age;
+    char add[40];
+
+  public:
+	void get();
+	void display();
+};
+
+void info::get()
+{
+  cout<<"Enter age";
+  cin>>age;
+  cout<<"Enter address";
+  cin>>add;
+  cout<<endl;
+
+}
+void info::display()
+{
+
+ cout<<"age:"<<age<<endl;
+ cout<<"address:"<<add<<endl;
+ cout<<endl;
+}
+class result:public mark,public info
+{
+     private:
+	     int total;
      public:
-     void display();
-  };
-  void result::display()
-  {
-    geta();
-    getb();
-    getc();
-    cout<<"\n name of art student:"<<name ;
-    cout<<"\n mark of art stdent:"<<mark;
-    cout<<"\n enter the name of science student:"<<name1;
-    cout<<"\n enter the mark of science student :"<<mark1;
-    cout<<"\n enter the name of comma student:"<<name2;
-    cout<<"\n enter the mark of comma student:"<<mark2;
+	     void get();
+	     void display();
+
+};
+void result::get()
+{
+   mark::get();
+   info::get();
+   total=m+m1;
+
+}
+void result::display()
+{
+mark::display();
+info::display();
+cout<<"Total of three subject:"<<total<<endl;
+}
+
+void main()
+ {
+    clrscr();
+
+    result s;
+    s.get();
+    s.display();
     getch();
-  }
-  void main()
-  {
-  clrscr();
-  result r;
-  r.display();
-  getch();
-  }
 
-
-
+}
